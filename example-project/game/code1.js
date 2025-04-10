@@ -8,6 +8,18 @@ gdjs.mainCode.GDGraveyardTilePlatformLeftObjects1= [];
 gdjs.mainCode.GDGraveyardTilePlatformLeftObjects2= [];
 gdjs.mainCode.GDGoldKeyObjects1= [];
 gdjs.mainCode.GDGoldKeyObjects2= [];
+gdjs.mainCode.GDSkyBackgroundObjects1= [];
+gdjs.mainCode.GDSkyBackgroundObjects2= [];
+gdjs.mainCode.GDSpaceBackground5Objects1= [];
+gdjs.mainCode.GDSpaceBackground5Objects2= [];
+gdjs.mainCode.GDMeteorRedObjects1= [];
+gdjs.mainCode.GDMeteorRedObjects2= [];
+gdjs.mainCode.GDRubberDuckObjects1= [];
+gdjs.mainCode.GDRubberDuckObjects2= [];
+gdjs.mainCode.GDsecretObjects1= [];
+gdjs.mainCode.GDsecretObjects2= [];
+gdjs.mainCode.GDDoorObjects1= [];
+gdjs.mainCode.GDDoorObjects2= [];
 gdjs.mainCode.GDForestBackgroundObjects1= [];
 gdjs.mainCode.GDForestBackgroundObjects2= [];
 gdjs.mainCode.GDscoreObjects1= [];
@@ -27,11 +39,15 @@ gdjs.mainCode.GDUiHeartObjects2= [];
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDGoldCoinObjects1Objects = Hashtable.newFrom({"GoldCoin": gdjs.mainCode.GDGoldCoinObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
+gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDRubberDuckObjects1Objects = Hashtable.newFrom({"RubberDuck": gdjs.mainCode.GDRubberDuckObjects1});
+gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDCampfireObjects1Objects = Hashtable.newFrom({"Campfire": gdjs.mainCode.GDCampfireObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDUiHeartObjects1Objects = Hashtable.newFrom({"UiHeart": gdjs.mainCode.GDUiHeartObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
 gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDGoldKeyObjects1Objects = Hashtable.newFrom({"GoldKey": gdjs.mainCode.GDGoldKeyObjects1});
+gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects = Hashtable.newFrom({"DinoVita": gdjs.mainCode.GDDinoVitaObjects1});
+gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDoorObjects1Objects = Hashtable.newFrom({"Door": gdjs.mainCode.GDDoorObjects1});
 gdjs.mainCode.eventsList0 = function(runtimeScene) {
 
 {
@@ -51,7 +67,31 @@ gdjs.copyArray(runtimeScene.getObjects("score"), gdjs.mainCode.GDscoreObjects1);
 }{gdjs.evtTools.sound.playSound(runtimeScene, "Coins 8.aac", false, 100, 1);
 }{runtimeScene.getGame().getVariables().getFromIndex(1).add(1);
 }{for(var i = 0, len = gdjs.mainCode.GDscoreObjects1.length ;i < len;++i) {
-    gdjs.mainCode.GDscoreObjects1[i].getBehavior("Text").setText("Coins: " + gdjs.evtTools.common.toString(gdjs.evtTools.variable.getVariableNumber(runtimeScene.getScene().getVariables().get("Score"))));
+    gdjs.mainCode.GDscoreObjects1[i].getBehavior("Text").setText("Coins: " + gdjs.evtTools.common.toString(gdjs.evtTools.variable.getVariableNumber(runtimeScene.getGame().getVariables().getFromIndex(1))));
+}
+}}
+
+}
+
+
+{
+
+gdjs.copyArray(runtimeScene.getObjects("DinoVita"), gdjs.mainCode.GDDinoVitaObjects1);
+gdjs.copyArray(runtimeScene.getObjects("RubberDuck"), gdjs.mainCode.GDRubberDuckObjects1);
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+isConditionTrue_0 = gdjs.evtTools.object.hitBoxesCollisionTest(gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects, gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDRubberDuckObjects1Objects, false, runtimeScene, false);
+if (isConditionTrue_0) {
+/* Reuse gdjs.mainCode.GDRubberDuckObjects1 */
+gdjs.copyArray(runtimeScene.getObjects("secret"), gdjs.mainCode.GDsecretObjects1);
+{for(var i = 0, len = gdjs.mainCode.GDRubberDuckObjects1.length ;i < len;++i) {
+    gdjs.mainCode.GDRubberDuckObjects1[i].deleteFromScene(runtimeScene);
+}
+}{gdjs.evtTools.sound.playSound(runtimeScene, "Gold 2.aac", false, 100, 1);
+}{runtimeScene.getGame().getVariables().getFromIndex(2).add(1);
+}{for(var i = 0, len = gdjs.mainCode.GDsecretObjects1.length ;i < len;++i) {
+    gdjs.mainCode.GDsecretObjects1[i].getBehavior("Text").setText("Secrets: " + gdjs.evtTools.common.toString(gdjs.evtTools.variable.getVariableNumber(runtimeScene.getGame().getVariables().getFromIndex(2))));
 }
 }}
 
@@ -332,11 +372,10 @@ let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.object.hitBoxesCollisionTest(gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects, gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDGoldKeyObjects1Objects, false, runtimeScene, false);
 if (isConditionTrue_0) {
-/* Reuse gdjs.mainCode.GDGoldKeyObjects1 */
-{for(var i = 0, len = gdjs.mainCode.GDGoldKeyObjects1.length ;i < len;++i) {
-    gdjs.mainCode.GDGoldKeyObjects1[i].deleteFromScene(runtimeScene);
+/* Reuse gdjs.mainCode.GDDinoVitaObjects1 */
+{for(var i = 0, len = gdjs.mainCode.GDDinoVitaObjects1.length ;i < len;++i) {
+    gdjs.mainCode.GDDinoVitaObjects1[i].setPosition(1354,-(1776));
 }
-}{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "main2", false);
 }}
 
 }
@@ -344,10 +383,15 @@ if (isConditionTrue_0) {
 
 {
 
+gdjs.copyArray(runtimeScene.getObjects("DinoVita"), gdjs.mainCode.GDDinoVitaObjects1);
+gdjs.copyArray(runtimeScene.getObjects("Door"), gdjs.mainCode.GDDoorObjects1);
 
 let isConditionTrue_0 = false;
-{
-}
+isConditionTrue_0 = false;
+isConditionTrue_0 = gdjs.evtTools.object.hitBoxesCollisionTest(gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDinoVitaObjects1Objects, gdjs.mainCode.mapOfGDgdjs_9546mainCode_9546GDDoorObjects1Objects, false, runtimeScene, false);
+if (isConditionTrue_0) {
+{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "win", false);
+}}
 
 }
 
@@ -365,6 +409,18 @@ gdjs.mainCode.GDGraveyardTilePlatformLeftObjects1.length = 0;
 gdjs.mainCode.GDGraveyardTilePlatformLeftObjects2.length = 0;
 gdjs.mainCode.GDGoldKeyObjects1.length = 0;
 gdjs.mainCode.GDGoldKeyObjects2.length = 0;
+gdjs.mainCode.GDSkyBackgroundObjects1.length = 0;
+gdjs.mainCode.GDSkyBackgroundObjects2.length = 0;
+gdjs.mainCode.GDSpaceBackground5Objects1.length = 0;
+gdjs.mainCode.GDSpaceBackground5Objects2.length = 0;
+gdjs.mainCode.GDMeteorRedObjects1.length = 0;
+gdjs.mainCode.GDMeteorRedObjects2.length = 0;
+gdjs.mainCode.GDRubberDuckObjects1.length = 0;
+gdjs.mainCode.GDRubberDuckObjects2.length = 0;
+gdjs.mainCode.GDsecretObjects1.length = 0;
+gdjs.mainCode.GDsecretObjects2.length = 0;
+gdjs.mainCode.GDDoorObjects1.length = 0;
+gdjs.mainCode.GDDoorObjects2.length = 0;
 gdjs.mainCode.GDForestBackgroundObjects1.length = 0;
 gdjs.mainCode.GDForestBackgroundObjects2.length = 0;
 gdjs.mainCode.GDscoreObjects1.length = 0;
@@ -389,6 +445,18 @@ gdjs.mainCode.GDGraveyardTilePlatformLeftObjects1.length = 0;
 gdjs.mainCode.GDGraveyardTilePlatformLeftObjects2.length = 0;
 gdjs.mainCode.GDGoldKeyObjects1.length = 0;
 gdjs.mainCode.GDGoldKeyObjects2.length = 0;
+gdjs.mainCode.GDSkyBackgroundObjects1.length = 0;
+gdjs.mainCode.GDSkyBackgroundObjects2.length = 0;
+gdjs.mainCode.GDSpaceBackground5Objects1.length = 0;
+gdjs.mainCode.GDSpaceBackground5Objects2.length = 0;
+gdjs.mainCode.GDMeteorRedObjects1.length = 0;
+gdjs.mainCode.GDMeteorRedObjects2.length = 0;
+gdjs.mainCode.GDRubberDuckObjects1.length = 0;
+gdjs.mainCode.GDRubberDuckObjects2.length = 0;
+gdjs.mainCode.GDsecretObjects1.length = 0;
+gdjs.mainCode.GDsecretObjects2.length = 0;
+gdjs.mainCode.GDDoorObjects1.length = 0;
+gdjs.mainCode.GDDoorObjects2.length = 0;
 gdjs.mainCode.GDForestBackgroundObjects1.length = 0;
 gdjs.mainCode.GDForestBackgroundObjects2.length = 0;
 gdjs.mainCode.GDscoreObjects1.length = 0;

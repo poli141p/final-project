@@ -20,6 +20,7 @@ gdjs.startCode.GDUiHeartObjects1= [];
 gdjs.startCode.GDUiHeartObjects2= [];
 
 
+gdjs.startCode.mapOfGDgdjs_9546startCode_9546GDLargePlayButtonObjects1Objects = Hashtable.newFrom({"LargePlayButton": gdjs.startCode.GDLargePlayButtonObjects1});
 gdjs.startCode.eventsList0 = function(runtimeScene) {
 
 {
@@ -28,6 +29,20 @@ gdjs.startCode.eventsList0 = function(runtimeScene) {
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonReleased(runtimeScene, "Left");
+if (isConditionTrue_0) {
+{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "main", false);
+}}
+
+}
+
+
+{
+
+gdjs.copyArray(runtimeScene.getObjects("LargePlayButton"), gdjs.startCode.GDLargePlayButtonObjects1);
+
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+isConditionTrue_0 = gdjs.evtTools.input.cursorOnObject(gdjs.startCode.mapOfGDgdjs_9546startCode_9546GDLargePlayButtonObjects1Objects, runtimeScene, true, false);
 if (isConditionTrue_0) {
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "main", false);
 }}
